@@ -63,7 +63,7 @@ module Watir
             window.execScript(scriptCode)
         end
         def window
-            Document.parentWindow
+            ie.Document.parentWindow
         end
       
   end
