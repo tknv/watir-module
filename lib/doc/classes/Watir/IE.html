@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="-iso-2022-jp"?>
+<?xml version="1.0" encoding="utf8"?>
 <!DOCTYPE html 
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <title>Class: Watir::IE</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=-iso-2022-jp" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
   <meta http-equiv="Content-Script-Type" content="text/javascript" />
   <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
   <script type="text/javascript">
@@ -86,12 +86,18 @@
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000005">execute_script</a>&nbsp;&nbsp;
-      <a href="#M000002">watir_testn_logging</a>&nbsp;&nbsp;
+      <a href="#M000009">execute_script</a>&nbsp;&nbsp;
+      <a href="#M000005">watir_test</a>&nbsp;&nbsp;
       <a href="#M000001">watir_wait_ajax</a>&nbsp;&nbsp;
-      <a href="#M000004">watir_waitn_clicklink</a>&nbsp;&nbsp;
-      <a href="#M000003">watir_waitn_test</a>&nbsp;&nbsp;
-      <a href="#M000006">window</a>&nbsp;&nbsp;
+      <a href="#M000003">watir_wait_ajax_buttons</a>&nbsp;&nbsp;
+      <a href="#M000004">watir_wait_ajax_images</a>&nbsp;&nbsp;
+      <a href="#M000002">watir_wait_ajax_links</a>&nbsp;&nbsp;
+      <a href="#M000008">watir_waitn_clicklink</a>&nbsp;&nbsp;
+      <a href="#M000006">watir_waitn_test</a>&nbsp;&nbsp;
+      <a href="#M000011">watir_waitn_test_at_field</a>&nbsp;&nbsp;
+      <a href="#M000007">watir_waitn_test_no_exist</a>&nbsp;&nbsp;
+      <a href="#M000012">watir_waitn_text_at_field</a>&nbsp;&nbsp;
+      <a href="#M000010">window</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -113,27 +119,23 @@
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000005" class="method-detail">
-        <a name="M000005"></a>
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
 
         <div class="method-heading">
-          <a href="#M000005" class="method-signature">
+          <a href="#M000009" class="method-signature">
           <span class="method-name">execute_script</span><span class="method-args">(scriptCode)</span>
           </a>
         </div>
       
         <div class="method-description">
-          <ul>
-<li>scriptCode:: 実行したいjavascript,for invoking javascript.
-
-</li>
-</ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000005-source">
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
 <pre>
-<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 135</span>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 150</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">execute_script</span>(<span class="ruby-identifier">scriptCode</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
             <span class="ruby-identifier">window</span>.<span class="ruby-identifier">execScript</span>(<span class="ruby-identifier">scriptCode</span>)
         <span class="ruby-keyword kw">end</span>
 </pre>
@@ -141,35 +143,30 @@
         </div>
       </div>
 
-      <div id="method-M000002" class="method-detail">
-        <a name="M000002"></a>
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
 
         <div class="method-heading">
-          <a href="#M000002" class="method-signature">
-          <span class="method-name">watir_testn_logging</span><span class="method-args">(testname,assrttext)</span>
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">watir_test</span><span class="method-args">(testname,assrttext)</span>
           </a>
         </div>
       
         <div class="method-description">
-          <ul>
-<li>testname:: ログに表示されるテストケース名,testcase name for logging.
-
-</li>
-<li>assrttext:: アサーションする文字列,assertion string.
-
-</li>
-</ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000002-source">
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
 <pre>
-<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 90</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_testn_logging</span>(<span class="ruby-identifier">testname</span>,<span class="ruby-identifier">assrttext</span>)
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 83</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_test</span>(<span class="ruby-identifier">testname</span>,<span class="ruby-identifier">assrttext</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
         <span class="ruby-comment cmt">#log</span>
         <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$logfile</span>,<span class="ruby-value">3</span>) <span class="ruby-comment cmt"># per 1 mgb. 3 rotate.</span>
         <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">assrttext</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} OK&quot;</span>)
-        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} NG&quot;</span>);<span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;error #{testname} #{assrttext}&quot;</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} NG&quot;</span>)
+        <span class="ruby-identifier">result_mail</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;error #{testname} #{assrttext}&quot;</span>
         <span class="ruby-keyword kw">end</span>
     <span class="ruby-keyword kw">end</span>
 </pre>
@@ -187,20 +184,13 @@
         </div>
       
         <div class="method-description">
-          <ul>
-<li>ajaxtext:: 待つ文字列、wating string.
-
-</li>
-<li>wtvalue:: 待ち時間(秒単位),wating time sec.
-
-</li>
-</ul>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000001-source">
 <pre>
-<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 74</span>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 15</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_wait_ajax</span>(<span class="ruby-identifier">ajaxtext</span>,<span class="ruby-identifier">wtvalue</span>=<span class="ruby-value">660</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
        <span class="ruby-comment cmt">#log</span>
         <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$logfile</span>,<span class="ruby-value">3</span>) <span class="ruby-comment cmt"># per 1 mgb. 3 rotate.</span>
         <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
@@ -210,6 +200,43 @@
         <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword kw">end</span>
         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">srendTime</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">wtvalue</span> <span class="ruby-keyword kw">then</span>
         <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Time out ! this is too long rendering,more than #{wtvalue}sec.&quot;</span>)
+        <span class="ruby-identifier">result_mail</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;render too long,stop testing&quot;</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="#M000003" class="method-signature">
+          <span class="method-name">watir_wait_ajax_buttons</span><span class="method-args">(buttonsnum,wtvalue=660)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
+<pre>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 49</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_wait_ajax_buttons</span>(<span class="ruby-identifier">buttonsnum</span>,<span class="ruby-identifier">wtvalue</span>=<span class="ruby-value">660</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
+       <span class="ruby-comment cmt">#log</span>
+        <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$logfile</span>,<span class="ruby-value">3</span>) <span class="ruby-comment cmt"># per 1 mgb. 3 rotate.</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
+      <span class="ruby-identifier">srendTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+      <span class="ruby-identifier">wtvalue</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-keyword kw">if</span> .<span class="ruby-identifier">links</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">buttonsnum</span> <span class="ruby-keyword kw">then</span> <span class="ruby-keyword kw">break</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">srendTime</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">wtvalue</span> <span class="ruby-keyword kw">then</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Time out ! this is too long rendering,more than #{wtvalue}sec.&quot;</span>)
+        <span class="ruby-identifier">result_mail</span>
         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;render too long,stop testing&quot;</span>
         <span class="ruby-keyword kw">else</span> <span class="ruby-keyword kw">end</span>
       <span class="ruby-keyword kw">end</span>
@@ -224,25 +251,90 @@
 
         <div class="method-heading">
           <a href="#M000004" class="method-signature">
+          <span class="method-name">watir_wait_ajax_images</span><span class="method-args">(imagesnum,wtvalue=660)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 66</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_wait_ajax_images</span>(<span class="ruby-identifier">imagesnum</span>,<span class="ruby-identifier">wtvalue</span>=<span class="ruby-value">660</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
+       <span class="ruby-comment cmt">#log</span>
+        <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$logfile</span>,<span class="ruby-value">3</span>) <span class="ruby-comment cmt"># per 1 mgb. 3 rotate.</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
+      <span class="ruby-identifier">srendTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+      <span class="ruby-identifier">wtvalue</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-keyword kw">if</span> .<span class="ruby-identifier">links</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">imagesnum</span> <span class="ruby-keyword kw">then</span> <span class="ruby-keyword kw">break</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">srendTime</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">wtvalue</span> <span class="ruby-keyword kw">then</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Time out ! this is too long rendering,more than #{wtvalue}sec.&quot;</span>)
+        <span class="ruby-identifier">result_mail</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;render too long,stop testing&quot;</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
+          <span class="method-name">watir_wait_ajax_links</span><span class="method-args">(linksnum,wtvalue=660)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
+<pre>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 32</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_wait_ajax_links</span>(<span class="ruby-identifier">linksnum</span>,<span class="ruby-identifier">wtvalue</span>=<span class="ruby-value">660</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
+       <span class="ruby-comment cmt">#log</span>
+        <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$logfile</span>,<span class="ruby-value">3</span>) <span class="ruby-comment cmt"># per 1 mgb. 3 rotate.</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
+      <span class="ruby-identifier">srendTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+      <span class="ruby-identifier">wtvalue</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-keyword kw">if</span> .<span class="ruby-identifier">links</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">linksnum</span> <span class="ruby-keyword kw">then</span> <span class="ruby-keyword kw">break</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">srendTime</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">wtvalue</span> <span class="ruby-keyword kw">then</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Time out ! this is too long rendering,more than #{wtvalue}sec.&quot;</span>)
+        <span class="ruby-identifier">result_mail</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;render too long,stop testing&quot;</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
           <span class="method-name">watir_waitn_clicklink</span><span class="method-args">(linktext,wtvalue=660)</span>
           </a>
         </div>
       
         <div class="method-description">
-          <ul>
-<li>linktext:: リンク名,link text
-
-</li>
-<li>wtvalue:: 待ち時間(秒単位),wating time sec.
-
-</li>
-</ul>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000004-source">
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
 <pre>
-<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 118</span>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 131</span>
     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_waitn_clicklink</span>(<span class="ruby-identifier">linktext</span>,<span class="ruby-identifier">wtvalue</span>=<span class="ruby-value">660</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
         <span class="ruby-comment cmt">#log</span>
         <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$logfile</span>,<span class="ruby-value">3</span>) <span class="ruby-comment cmt"># per 1 mgb. 3 rotate.</span>
         <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
@@ -253,56 +345,11 @@
         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">srendTime</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">wtvalue</span> <span class="ruby-keyword kw">then</span>
         <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Time out ! this is too long rendering,more than #{wtvalue}sec.&quot;</span>)
         <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Wating #{linktext} NG&quot;</span>)
+        <span class="ruby-identifier">result_mail</span>
         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;render too long ! stop testing.&quot;</span>
         <span class="ruby-keyword kw">else</span> <span class="ruby-keyword kw">end</span>
       <span class="ruby-keyword kw">end</span>
       <span class="ruby-identifier">link</span>(<span class="ruby-identifier">:text</span>, <span class="ruby-identifier">linktext</span>).<span class="ruby-identifier">click</span>
-    <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
-      <div id="method-M000003" class="method-detail">
-        <a name="M000003"></a>
-
-        <div class="method-heading">
-          <a href="#M000003" class="method-signature">
-          <span class="method-name">watir_waitn_test</span><span class="method-args">(testname,assrttext,wtvalue=660)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <ul>
-<li>testname:: ログに表示されるテストケース名,testcase name for logging.
-
-</li>
-<li>assrttext:: アサーションする文字列,assertion string.
-
-</li>
-<li>wtvalue:: 待ち時間(秒単位),wating time sec.
-
-</li>
-</ul>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000003-source">
-<pre>
-<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 101</span>
-    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_waitn_test</span>(<span class="ruby-identifier">testname</span>,<span class="ruby-identifier">assrttext</span>,<span class="ruby-identifier">wtvalue</span>=<span class="ruby-value">660</span>)
-        <span class="ruby-comment cmt">#log</span>
-        <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$logfile</span>,<span class="ruby-value">3</span>) <span class="ruby-comment cmt"># per 1 mgb. 3 rotate.</span>
-        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
-      <span class="ruby-identifier">srendTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
-      <span class="ruby-identifier">wtvalue</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">assrttext</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} OK&quot;</span>);<span class="ruby-keyword kw">break</span>
-        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword kw">end</span>
-        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">srendTime</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">wtvalue</span> <span class="ruby-keyword kw">then</span>
-        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Time out ! this is too long rendering,more than #{wtvalue}sec.&quot;</span>)
-        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} NG&quot;</span>)
-        <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;render too long ! stop testing.&quot;</span>
-        <span class="ruby-keyword kw">else</span> <span class="ruby-keyword kw">end</span>
-      <span class="ruby-keyword kw">end</span>
     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
@@ -314,7 +361,7 @@
 
         <div class="method-heading">
           <a href="#M000006" class="method-signature">
-          <span class="method-name">window</span><span class="method-args">()</span>
+          <span class="method-name">watir_waitn_test</span><span class="method-args">(testname,assrttext,wtvalue=660)</span>
           </a>
         </div>
       
@@ -323,9 +370,154 @@
             onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000006-source">
 <pre>
-<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 138</span>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 95</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_waitn_test</span>(<span class="ruby-identifier">testname</span>,<span class="ruby-identifier">assrttext</span>,<span class="ruby-identifier">wtvalue</span>=<span class="ruby-value">660</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
+        <span class="ruby-comment cmt">#log</span>
+        <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$logfile</span>,<span class="ruby-value">3</span>) <span class="ruby-comment cmt"># per 1 mgb. 3 rotate.</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
+      <span class="ruby-identifier">srendTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+      <span class="ruby-identifier">wtvalue</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">assrttext</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} OK&quot;</span>);<span class="ruby-keyword kw">break</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">srendTime</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">wtvalue</span> <span class="ruby-keyword kw">then</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Time out ! this is too long rendering,more than #{wtvalue}sec.&quot;</span>)
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} NG&quot;</span>)
+        <span class="ruby-identifier">result_mail</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;render too long ! stop testing.&quot;</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="#M000011" class="method-signature">
+          <span class="method-name">watir_waitn_test_at_field</span><span class="method-args">(testname,assrttext,fieldnumber,wtvalue=660)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
+<pre>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 159</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_waitn_test_at_field</span>(<span class="ruby-identifier">testname</span>,<span class="ruby-identifier">assrttext</span>,<span class="ruby-identifier">fieldnumber</span>,<span class="ruby-identifier">wtvalue</span>=<span class="ruby-value">660</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
+        <span class="ruby-comment cmt">#log</span>
+        <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$logfile</span>,<span class="ruby-value">3</span>) <span class="ruby-comment cmt"># per 1 mgb. 3 rotate.</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
+      <span class="ruby-identifier">srendTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+        <span class="ruby-identifier">wtvalue</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text_fields</span>[<span class="ruby-identifier">fieldnumber</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/#{assrttext}/</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} OK&quot;</span>);<span class="ruby-keyword kw">break</span>
+          <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">srendTime</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">wtvalue</span> <span class="ruby-keyword kw">then</span>
+          <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Time out ! this is too long rendering,more than #{wtvalue}sec.&quot;</span>)
+          <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} NG&quot;</span>)
+          <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;render too long ! stop testing.&quot;</span>
+          <span class="ruby-keyword kw">else</span> <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">watir_waitn_test_no_exist</span><span class="method-args">(testname,assrttext,wtvalue=660)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 113</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_waitn_test_no_exist</span>(<span class="ruby-identifier">testname</span>,<span class="ruby-identifier">assrttext</span>,<span class="ruby-identifier">wtvalue</span>=<span class="ruby-value">660</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
+        <span class="ruby-comment cmt">#log</span>
+        <span class="ruby-identifier">logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">$logfile</span>,<span class="ruby-value">3</span>) <span class="ruby-comment cmt"># per 1 mgb. 3 rotate.</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">DEBUG</span>
+      <span class="ruby-identifier">srendTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+      <span class="ruby-identifier">wtvalue</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">assrttext</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} OK&quot;</span>);<span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">srendTime</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">wtvalue</span> <span class="ruby-keyword kw">then</span>
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Time out ! this is too long rendering,more than #{wtvalue}sec.&quot;</span>)
+        <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} NG&quot;</span>)
+        <span class="ruby-identifier">result_mail</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;render too long ! stop testing.&quot;</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000012" class="method-detail">
+        <a name="M000012"></a>
+
+        <div class="method-heading">
+          <a href="#M000012" class="method-signature">
+          <span class="method-name">watir_waitn_text_at_field</span><span class="method-args">(text,fieldnumber,wtvalue=660)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000012-source">
+<pre>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 176</span>
+     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">watir_waitn_text_at_field</span>(<span class="ruby-identifier">text</span>,<span class="ruby-identifier">fieldnumber</span>,<span class="ruby-identifier">wtvalue</span>=<span class="ruby-value">660</span>)
+      <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
+      <span class="ruby-identifier">srendTime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+        <span class="ruby-identifier">wtvalue</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">text_fields</span>[<span class="ruby-identifier">fieldnumber</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/#{text}/</span> <span class="ruby-keyword kw">then</span> <span class="ruby-keyword kw">break</span>
+          <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">srendTime</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">wtvalue</span> <span class="ruby-keyword kw">then</span>
+          <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; Time out ! this is too long rendering,more than #{wtvalue}sec.&quot;</span>)
+          <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot; #{testname} #{assrttext} NG&quot;</span>)
+          <span class="ruby-identifier">result_mail</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;render too long ! stop testing.&quot;</span>
+          <span class="ruby-keyword kw">else</span> <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="#M000010" class="method-signature">
+          <span class="method-name">window</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
+<pre>
+<span class="ruby-comment cmt"># File watir_ajax_lib.rb, line 154</span>
         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">window</span>
-            <span class="ruby-constant">Document</span>.<span class="ruby-identifier">parentWindow</span>
+          <span class="ruby-constant">WIN32OLE</span>.<span class="ruby-identifier">codepage</span> = <span class="ruby-constant">WIN32OLE</span><span class="ruby-operator">::</span><span class="ruby-constant">CP_UTF8</span>
+            <span class="ruby-identifier">ie</span>.<span class="ruby-constant">Document</span>.<span class="ruby-identifier">parentWindow</span>
         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>

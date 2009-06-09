@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="-iso-2022-jp"?>
+<?xml version="1.0" encoding="utf8"?>
 <!DOCTYPE html 
      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <title>File: watir_ajax_lib.rb</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=-iso-2022-jp" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
   <meta http-equiv="Content-Script-Type" content="text/javascript" />
   <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
   <script type="text/javascript">
@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Tue May 19 17:30:23 +0900 2009</td>
+      <td>Tue Jun 09 18:11:24 +0900 2009</td>
     </tr>
     </table>
   </div>
@@ -69,80 +69,8 @@
   <div id="contextContent">
 
     <div id="description">
-      <h1>watir-module</h1>
-<table>
-<tr><td valign="top">Authors:</td><td>tknv
-
-</td></tr>
-<tr><td valign="top">Version:</td><td>0.2 2009-05-18
-
-</td></tr>
-<tr><td valign="top">Copyright:</td><td>Copyright (C) 2009 tknv. All rights reserved.
-
-</td></tr>
-<tr><td valign="top">License:</td><td>Released under the MIT License: <a
-href="http://www.opensource.org/licenses/mit-license.php">www.opensource.org/licenses/mit-license.php</a>
-
-</td></tr>
-</table>
-<h2>very about watir-module &amp; aim</h2>
-<p>
-In default time out more than 11min.this is can change in wtvalue. Check
-rendering per 1sec. Because usually watir never wait ajax rendering. It is
-not so good idea,just for anyone DRI.
-</p>
-<p>
-デフォルトでは、11分過ぎるとタイムアウトします。
-1秒ごとにレンダリングされたかどうか確認します。
-通常のwatirでのwaitは非同期のレンダリング関与しないため。
-たいしたもんではないです。めんどくさい事は楽しましょう。
-</p>
-<h2>Usage:使い方</h2>
-<p>
-test.rbでreuire &#8216;lib/watir_ajax_lib&#8216;
-</p>
-<h2>watir_wait_ajax</h2>
-<p>
-Wating until show that string. Because usually watir never wait ajax
-rendering.
-</p>
-<p>
-ajaxのレンダリングを待つのではなく、その文字列が表示されるまで待つ。
-通常のwatirでのwaitは非同期のレンダリング関与しないためこれで待つ。
-</p>
-<h2>watir_testn_logging</h2>
-<p>
-Assert that string,if exist OK,no NG and stop testing. and logging result.
-</p>
-<p>
-その文字列があればOK,なければNGでテストを停止
-また、テスト結果をログに記録します。
-</p>
-<h2>watir_waitn_test</h2>
-<p>
-Just add wating sequence to above method.
-</p>
-<p>
-その文字列があるかどうを一定時間待ち、あれはOK,なければNGでテストを停止
-また、テスト結果をログに記録します。
-</p>
-<h2>watir_waitn_clicklink</h2>
-<p>
-If find the link,to click.Otherwise wait until timeout. when
-timeout,logging and stop testing.
-</p>
-<p>
-そのクリックしたい文字列が表示されるまで一定時間待ち、あればリンクをクリック、なければNGでテストを停止
-また、テスト結果をログに記録します。
-</p>
-<h2>execute_script</h2>
-<p>
-invoke java script. Not work well yet,one view one invoke limitation now.
-</p>
-<p>
-javascriptを実行する。 また、動きが怪しいため、exception
-errorを無理やりハンドリングして動いている状況
-問題はないが、要検討、一遷移に付き一javascript invokeなら問題ない。
+      <p>
+!/usr/bin/env ruby
 </p>
 
     </div>
@@ -155,6 +83,7 @@ errorを無理やりハンドリングして動いている状況
       watir&nbsp;&nbsp;
       win32ole&nbsp;&nbsp;
       logger&nbsp;&nbsp;
+      jcode&nbsp;&nbsp;
       </div>
     </div>
 
