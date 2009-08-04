@@ -1,0 +1,98 @@
+= Support watir testing
+
+== requirement
+
+  *pony:  gem install pony
+  *smtp-tls:  git://github.com/kilari/smtp_tls.git
+
+== usage
+  #! ruby -Ku
+  #!/usr/bin/env ruby
+
+  require 'test/unit'
+  require 'rubygems'
+  require 'watir'
+  require 'lib/watir_ajax_lib'
+  
+  testDomain = 'http://foofoo-test.org'
+
+  class AppTest < Test::Unit::TestCase
+    include Watir
+
+      def test_login
+        @ie = Watir::IE.new
+        @ie.goto("#{testDomain}/login.aspx")
+        @ie.text_field(:id, 'account').set(memid)
+        @ie.text_field(:id, 'password').set('19700701')
+        @ie.button(:xpath, "//input[@value='Login']").click
+        @ie.watir_waitn_test('login-check', "logout")
+      end
+  end
+
+== methods
+
+=== result_mail()
+* send result mail with embedded logs
+
+=== watir_invoke_js(script)
+* execute javascript
+
+=== watir_test(testname,assrttext)
+* testname: test name for logging
+* assrttext: text for assertion
+
+=== watir_wait_ajax(ajaxtext,wtvalue=660)
+* ajaxtext: text for assertion
+* wtvalue: time out(default 660sec.)
+
+=== watir_wait_ajax_buttons(buttonsnum,wtvalue=660)
+* buttonsnum: quantity of buttons in view for waiting
+* wtvalue: time out(default 660sec.)
+
+=== watir_wait_ajax_images(imagesnum,wtvalue=660)
+* imagesnum: quantity of images in view for waiting
+* wtvalue: time out(default 660sec.)
+
+=== watir_wait_ajax_links(linksnum,wtvalue=660)
+* linksnum: quantity of links in view for waiting
+* wtvalue: time out(default 660sec.)
+
+=== watir_wait_enable_ajax_buttons(tag,var,wtvalue=660)
+* imagesnum: quantity of images in view for waiting
+* wtvalue: time out(default 660sec.)
+
+=== watir_waitn_clicklink(linktext,wtvalue=660)
+* linktext: wating this link and click
+* wtvalue: time out(default 660sec.)
+
+=== watir_waitn_test(testname,assrttext,wtvalue=660)
+* testname: test name for logging
+* assrttext: text for assertion
+* wtvalue: time out(default 660sec.)
+
+=== watir_waitn_test_at_field(testname,assrttext,fieldnumber,wtvalue=660)
+* testname: test name for logging
+* assrttext: text for assertion
+* fieldnumber: index number of field
+* wtvalue: time out(default 660sec.)
+
+=== watir_waitn_test_no_exist(testname,assrttext,wtvalue=660)
+* testname: test name for logging
+* assrttext: should not exsit text for assertion 
+* wtvalue: time out(default 660sec.)
+
+=== watir_waitn_text_at_field(text,fieldnumber,wtvalue=660)
+* text: text for wating
+* fieldnumber: index number of field
+* wtvalue: time out(default 660sec.)
+
+
+== Limitations
+* ...
+
+
+== Meta
+Made by:
+Watanabe Takanobu
+
+Released under the MIT License: http://www.opensource.org/licenses/mit-license.php

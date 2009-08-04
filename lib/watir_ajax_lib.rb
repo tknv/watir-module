@@ -6,9 +6,14 @@ require 'watir'
 require 'win32ole'
 require 'logger'
 require 'jcode'
+require 'pony'
+require 'erb'
+require 'lib/smtp-tls.rb'
 
 $KCODE = 'UTF8'
-
+$logfile = 'testlog.log'
+$testMachine = 'IBM X911'
+$actionName = 'fromLogintoBuyAllgoods'
 
 module Watir
   class IE
@@ -36,7 +41,7 @@ module Watir
         logger.level = Logger::DEBUG
       srendTime = Time.now
       wtvalue.times do
-        if .links.length >= linksnum then break
+        if links.length >= linksnum then break
         else sleep(1) end
         if Time.now - srendTime >= wtvalue then
         logger.debug(Time.now.to_s + " Time out ! this is too long rendering,more than #{wtvalue}sec.")
@@ -53,7 +58,24 @@ module Watir
         logger.level = Logger::DEBUG
       srendTime = Time.now
       wtvalue.times do
-        if .links.length >= buttonsnum then break
+        if buttons.length >= buttonsnum then break
+        else sleep(1) end
+        if Time.now - srendTime >= wtvalue then
+        logger.debug(Time.now.to_s + " Time out ! this is too long rendering,more than #{wtvalue}sec.")
+        result_mail
+        raise "render too long,stop testing"
+        else end
+      end
+    end
+    
+    def watir_wait_enable_ajax_buttons(tag,var,wtvalue=660)
+      WIN32OLE.codepage = WIN32OLE::CP_UTF8
+       #log
+        logger = Logger.new($logfile,3) # per 1 mgb. 3 rotate.
+        logger.level = Logger::DEBUG
+      srendTime = Time.now
+      wtvalue.times do
+        if button(tag, var).enabled? == true then break
         else sleep(1) end
         if Time.now - srendTime >= wtvalue then
         logger.debug(Time.now.to_s + " Time out ! this is too long rendering,more than #{wtvalue}sec.")
@@ -70,7 +92,7 @@ module Watir
         logger.level = Logger::DEBUG
       srendTime = Time.now
       wtvalue.times do
-        if .links.length >= imagesnum then break
+        if images.length >= imagesnum then break
         else sleep(1) end
         if Time.now - srendTime >= wtvalue then
         logger.debug(Time.now.to_s + " Time out ! this is too long rendering,more than #{wtvalue}sec.")
@@ -144,17 +166,21 @@ module Watir
         raise "render too long ! stop testing."
         else end
       end
-      link(:text, linktext).click
+      link(:text, "#{linktext}").click
     end
     
-    def execute_script(scriptCode)
-      WIN32OLE.codepage = WIN32OLE::CP_UTF8
-            window.execScript(scriptCode)
-        end
-        def window
-          WIN32OLE.codepage = WIN32OLE::CP_UTF8
-            ie.Document.parentWindow
-        end
+      def execute_script(scriptCode)
+        WIN32OLE.codepage = WIN32OLE::CP_UTF8
+              window.execScript(scriptCode)
+      end
+      def window
+            WIN32OLE.codepage = WIN32OLE::CP_UTF8
+              ie.Document.parentWindow
+      end
+      
+      def watir_invoke_js(script)
+        link(:url, "#{script};").click
+      end
      
       def watir_waitn_test_at_field(testname,assrttext,fieldnumber,wtvalue=660)
       WIN32OLE.codepage = WIN32OLE::CP_UTF8
@@ -188,5 +214,22 @@ module Watir
         end
       end
      
+      def result_mail
+        @result_logs = File.open($logfile)
+        view = ERB.new(File.read('views/ebody.erb'))
+        Pony.mail( :to => 'yourTestManger@test.com', 
+        :from => "#{$testMachine}",
+        :subject => "#{$actionName}",
+        :body => view.result(binding),
+        :via => :smtp,
+        :smtp => {
+        :host  => 'smtp.gmail.com',
+        :port  => '587', 
+        :user => '<YourAccount>@gmail.com',
+        :password  => '<yourGmailPwd>',
+        :auth  => :plain,
+        :domain => 'gmail.com'
+        })
+      end
   end
 end
